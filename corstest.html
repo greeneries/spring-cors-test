@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+
+	<h3>step1.jsp</h3>
+	<div id="target">
+
+	</div>
+	<button type="button" id="btnGetAll">Get All</button>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+	<script type="text/javascript">
+		let btnGetAll = document.getElementById("btnGetAll");
+		btnGetAll.addEventListener('click', function(){
+			axios.get('http://localhost:8080/emps')
+			  .then(function (response) {
+				  console.log(response);
+				 let data = response.data.data;
+				 target.innerText = JSON.stringify(data);
+			    
+			  })
+			  .catch(function (error) {
+			    console.log(error);
+			  });
+		});
+	</script>
+
+</body>
+</html>
